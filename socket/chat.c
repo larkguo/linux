@@ -17,7 +17,6 @@ chat server  -- by larkguo@gmail.com
 #include <arpa/inet.h>
 #include <netdb.h>
 
-#define ECHO_SERVER
 #define MAX_BUF_LEN  (1024)
 
 void *get_in_addr(struct sockaddr *sa);
@@ -163,17 +162,10 @@ main(int argc,char *argv[])
 						printf("socket[%d] <-- %s\n", i, buf);
 						for(j = 0; j <= maxfd; j++) {
 							if (FD_ISSET(j, &all_fds)) {
-#ifdef ECHO_SERVER
-								if (j == i) {
-									int slen = send(j, buf, rlen, 0) ;
-									if(slen > 0) printf("socket[%d] --> %s\n",j,buf);
-								}
-#else
 								if (j != listenfd && j != i) {
 									int slen = send(j, buf, rlen, 0) ;
 									if(slen > 0) printf("socket[%d] --> %s\n",j,buf);
 								}
-#endif
 							}
 						}
 					}
