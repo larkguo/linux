@@ -2,13 +2,11 @@
 /*
  key&value regex   -- by larkguo@gmail.com
 
-1.Requires:
-	PCRE:Perl Compatible Regular Expressions
 
-2.Compile:
+1.Compile:
 	gcc regex.c -o regex
 	
-3.Run:
+2.Run:
 	# ./regex 
 	string(abc=123) pattern(^([a-z][a-z0-9_]*)=([a-z0-9_]*)$)
 	match:
