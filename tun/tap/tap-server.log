@@ -1,0 +1,143 @@
+root@ubuntu:/home/lg/server# ./runme.sh 
+server: no process found
+Successfully connected to interface tap132
+root@ubuntu:/home/lg/server# ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:0c:29:06:48:6a  
+          inet addr:192.168.109.132  Bcast:192.168.109.255  Mask:255.255.255.0
+          inet6 addr: fe80::20c:29ff:fe06:486a/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1938 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1324 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:359627 (359.6 KB)  TX bytes:226767 (226.7 KB)
+          Interrupt:19 Base address:0x2000 
+
+tap132    Link encap:Ethernet  HWaddr 9e:db:4e:94:c0:31  
+          inet addr:192.168.8.132  Bcast:192.168.8.255  Mask:255.255.255.0
+          inet6 addr: fe80::9cdb:4eff:fe94:c031/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+root@ubuntu:/home/lg/server# ip route
+192.168.8.0/24 dev tap132  proto kernel  scope link  src 192.168.8.132 
+192.168.109.0/24 dev eth0  proto kernel  scope link  src 192.168.109.132 
+root@ubuntu:/home/lg/server# arp -n
+Address                  HWtype  HWaddress           Flags Mask            Iface
+192.168.109.1            ether   00:50:56:c0:00:08   C                     eth0
+192.168.109.134          ether   00:0c:29:41:30:83   C                     eth0
+root@ubuntu:/home/lg/server# 
+<--Virtual NIC 90
+-->Real NIC 90
+
+<--Virtual NIC 54
+-->Real NIC 54
+
+<--Virtual NIC 54
+-->Real NIC 54
+
+<--Virtual NIC 343
+-->Real NIC 343
+
+<--Virtual NIC 206
+-->Real NIC 206
+
+<--Virtual NIC 343
+-->Real NIC 343
+
+<--Virtual NIC 78
+-->Real NIC 78
+
+<--Virtual NIC 343
+-->Real NIC 343
+
+<--Virtual NIC 313
+-->Real NIC 313
+
+<--Virtual NIC 206
+-->Real NIC 206
+
+<--Virtual NIC 70
+-->Real NIC 70
+
+<--Virtual NIC 110
+-->Real NIC 110
+
+<--Virtual NIC 383
+-->Real NIC 383
+
+<--Virtual NIC 194
+-->Real NIC 194
+
+<--Virtual NIC 123
+-->Real NIC 123
+
+<--Virtual NIC 226
+-->Real NIC 226
+
+<--Virtual NIC 258
+-->Real NIC 258
+
+<--Virtual NIC 90
+-->Real NIC 90
+
+<--Virtual NIC 383
+-->Real NIC 383
+
+<--Virtual NIC 194
+-->Real NIC 194
+
+<--Virtual NIC 383
+-->Real NIC 383
+
+<--Virtual NIC 194
+-->Real NIC 194
+
+<--Virtual NIC 123
+-->Real NIC 123
+
+<--Virtual NIC 359
+-->Real NIC 359
+
+<--Virtual NIC 182
+-->Real NIC 182
+
+<--Virtual NIC 329
+-->Real NIC 329
+
+<--Virtual NIC 341
+-->Real NIC 341
+
+<--Virtual NIC 359
+-->Real NIC 359
+
+<--Virtual NIC 154
+-->Real NIC 154
+
+<--Virtual NIC 341
+-->Real NIC 341
+
+<--Virtual NIC 329
+-->Real NIC 329
+
+<--Virtual NIC 70
+-->Real NIC 70
+
+<--Virtual NIC 359
+-->Real NIC 359
+
+<--Virtual NIC 182
+-->Real NIC 182
+
+<--Virtual NIC 70
+-->Real NIC 70
+
+<--Real NIC 90
+-->Virtual NIC 90
+
+<--Real NIC 54
+-->Virtual NIC 54
+
+......

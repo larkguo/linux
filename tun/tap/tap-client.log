@@ -1,0 +1,74 @@
+root@ubuntu:/home/lg/client# ./runme.sh 
+client: no process found
+Successfully connected to interface tap134
+
+<--Real NIC 1999
+-->Virtual NIC 1999
+
+<--Real NIC 1999
+-->Virtual NIC 1999
+
+<--Real NIC 1999
+-->Virtual NIC 1999
+
+<--Real NIC 1839
+-->Virtual NIC 1839
+
+<--Virtual NIC 90
+-->Real NIC 90
+
+<--Virtual NIC 54
+-->Real NIC 54
+PING 192.168.8.132 (192.168.8.132) from 192.168.8.134 : 56(84) bytes of data.
+
+<--Virtual NIC 42
+-->Real NIC 42
+
+<--Real NIC 42
+-->Virtual NIC 42
+
+<--Virtual NIC 98
+-->Real NIC 98
+
+<--Real NIC 98
+-->Virtual NIC 98
+64 bytes from 192.168.8.132: icmp_req=1 ttl=64 time=4.90 ms
+
+--- 192.168.8.132 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 4.900/4.900/4.900/0.000 ms
+root@ubuntu:/home/lg/client# 
+
+root@ubuntu:/home/lg/client# ifconfig
+
+eth0      Link encap:Ethernet  HWaddr 00:0c:29:41:30:83  
+          inet addr:192.168.109.134  Bcast:192.168.109.255  Mask:255.255.255.0
+          inet6 addr: fe80::20c:29ff:fe41:3083/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1130 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1584 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:109576 (109.5 KB)  TX bytes:240686 (240.6 KB)
+          Interrupt:19 Base address:0x2000 
+
+tap134    Link encap:Ethernet  HWaddr 32:f2:ef:fe:f9:ff  
+          inet addr:192.168.8.134  Bcast:192.168.8.255  Mask:255.255.255.0
+          inet6 addr: fe80::30f2:efff:fefe:f9ff/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:14 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:66 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:8767 (8.7 KB)  TX bytes:8138 (8.1 KB)
+
+root@ubuntu:/home/lg/client# ip route
+169.254.0.0/16 dev eth0  scope link  metric 1000 
+192.168.8.0/24 dev tap134  proto kernel  scope link  src 192.168.8.134 
+192.168.109.0/24 dev eth0  proto kernel  scope link  src 192.168.109.134  metric 1 
+root@ubuntu:/home/lg/client# arp -n
+
+Address                  HWtype  HWaddress           Flags Mask            Iface
+192.168.109.2            ether   00:50:56:eb:29:b1   C                     eth0
+192.168.8.132            ether   9e:db:4e:94:c0:31   C                     tap134
+192.168.109.132          ether   00:0c:29:06:48:6a   C                     eth0
+192.168.109.1            ether   00:50:56:c0:00:08   C                     eth0
+root@ubuntu:/home/lg/client# 
