@@ -1,0 +1,29 @@
+========================[192.168.109.159]========================
+
+vconfig add eth0 100
+ifconfig eth0.100 hw ether 00:0c:29:06:48:6b
+ifconfig eth0.100 192.168.100.1
+
+
+ip rule add from 192.168.100.0/24 lookup 100 
+ip rule add to 192.168.100.0/24 lookup 100 
+ip route add 192.168.100.0/24 dev eth0.100 table 100
+ip route add default via 192.168.109.2 dev eth0 table 100
+
+iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -j MASQUERADE
+
+
+
+========================[192.168.109.160]========================
+
+vconfig add eth0 100
+ifconfig eth0.100 hw ether 00:0c:29:41:30:84
+ifconfig eth0.100 192.168.100.2
+vconfig set_egress_map eth0.100 0 6
+
+ip rule add from 192.168.100.0/24 lookup 100 
+ip rule add to 192.168.100.0/24 lookup 100 
+ip route add 192.168.100.0/24 dev eth0.100 table 100
+ip route add default via 192.168.109.2 dev eth0 table 100
+
+iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -j MASQUERADE
