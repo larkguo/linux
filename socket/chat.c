@@ -123,8 +123,9 @@ main(int argc,char *argv[])
 		listenfd = tcp_listen(argv[1], argv[2], &addrlen);
 	}
 	else{
-		printf("usage: chat  [<listen IPaddress>]  <listen port#>\n");
-		return -1;
+		printf("usage: chat  [<listen IPaddress,default:NULL>]  <listen port#,default:8000>\n");
+		listenfd = tcp_listen(NULL, 8000, &addrlen);
+		//return -1;
 	}
 	if( listenfd <= 0 ){
 		printf("listen error!\n");
