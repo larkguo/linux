@@ -5,9 +5,9 @@ chat server  -- by larkguo@gmail.com
 	gcc 	chat.c 	-o 	chat
 
 2.Run:
-	./chat	8000
-	./chat	127.0.0.1		8000
-	./chat	::1		8000
+	./chat	8080
+	./chat	127.0.0.1 8080
+	./chat	::1 8080
 */
 
 #include <stdio.h>
@@ -123,8 +123,8 @@ main(int argc,char *argv[])
 		listenfd = tcp_listen(argv[1], argv[2], &addrlen);
 	}
 	else{
-		printf("usage: chat  [<listen IPaddress,default:NULL>]  <listen port#,default:8000>\n");
-		listenfd = tcp_listen(NULL, "8000", &addrlen);
+		printf("usage: chat  [<listen IPaddress,default:NULL>]  <listen port#,default:8080>\n");
+		listenfd = tcp_listen(NULL, "8080", &addrlen);
 		//return -1;
 	}
 	if( listenfd <= 0 ){
